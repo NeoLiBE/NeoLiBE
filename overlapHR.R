@@ -1,7 +1,9 @@
 #A R script to perform calculations of home-range overlap based on minimum convex polygon method
 # Code by Augusto Ribas
 #Modified by D. Passos and C. Galdino in October 2013
-#Last review: 07 May 20114
+#Last review: 07 May 2014
+
+
 #ATENTION: Requires package rgeos please use: install.packages("rgeos"), first
 #ATENTION: This code is able to calculate only polygons areas, look at your database for any forms that is not a polygon, as a line :D
 
