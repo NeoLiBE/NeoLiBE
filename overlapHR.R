@@ -1,4 +1,4 @@
-#A R script to perform calculations of home-range overlap based on MCP method
+#A R script to perform calculations of home-range overlap based on minimum convex polygon method
 # Code by Augusto Ribas
 #Modified by D. Passos and C. Galdino in October 2013
 #Last review: 07 May 20114
