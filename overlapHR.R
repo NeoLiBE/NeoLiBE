@@ -1,7 +1,7 @@
 #######################################################################################################
 #
 # overlapHR
-# A R code for calculations on home-range area and overlap based on minimum convex polygon method
+# A R code to automate animals home range estimates and overlap based on minimum convex polygon method
 #
 #
 ########################################################################################################
@@ -104,7 +104,7 @@ if(b=="y"){
 
 pointdata = read.csv("spatdata.csv", header=TRUE, sep=",")  # pay spetial attention in the type of columm separator you're using here we used "," you can change it accordling.
 
-pointdata # inspecting the object “pointdata”
+print(pointdata) # inspecting the object “pointdata”
  
 
 ###############################
