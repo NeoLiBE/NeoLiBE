@@ -55,18 +55,26 @@ if(is.element('rgeos', installed.packages()[,1]) == FALSE) {
 {print("You already have installed the rgeos package!")
 }
 
-cat ("Press [enter] please")
-readline();
+#cat ("Press [enter] please")
+#readline();
+repeat 
+{
 print("Do you want to load rgeos at this time?[y] or [n]")
 a=scan(what=character(),nmax=1);
+
 if(a=="y"){
 	print("Loading the package")
 	library('rgeos')
 	print("rgeos package is ready to use")
 	print("next time you need to load rgeos package please do it manually");
+break;
 }else if (a=="n"){
 	print("Ok, maybe you consider to do it later")
+break;
+
 }else {print("Please type lower case y or n")
+
+}
 }
 
 
@@ -79,8 +87,10 @@ if(is.element('adehabitatHR', installed.packages()[,1]) == FALSE) {
 }else {is.element('adehabitatHR', installed.packages()[,1]) == TRUE}
 {print("You already have installed the adehabitatHR package!")
 }
-cat ("Press [enter] please")
-readline();
+#cat ("Press [enter] please")
+#readline();
+repeat
+{
 print("Do you want to load adehabitatHR at this time?[y] or [n]")
 cat(" "); b=scan(what=character(),nmax=1);
 if(b=="y"){ 
@@ -90,11 +100,13 @@ if(b=="y"){
 	readline();
 	print("adehabitatHR is ready to use")
 	print("next time you need to load adehabitatHR please do it manually")
+break;
 }else if (b=="n"){
 	print("Ok, maybe you consider to do it later")
+break;
 }else {print("Please type lower case y or n")
 }
-
+}
 
 ######################
 #Loading data into R 
@@ -129,15 +141,19 @@ print("Do you want to see values of home ranges? [y] or [n]")
 cat ("press y if yes or n if you don't: ")
 print("Press [enter], please!")
 cat(" "); c=scan(what=character(),nmax=1);
+repeat
+{
 if(c=="y"){ 
 	print(hranges.df)	
 	print("Check in your work folder for HRanges.csv file")
 	write.csv(hranges.df, "HRanges.csv")
+break;
 }else if(c=="n"){
 	print("Ok, maybe you consider to do it later")
+break;
 }else{ print("Please type lower case y or n")
 }
-
+}
 ########################################################
 #Asking to print the plot with the home ranges
 ########################################################
@@ -146,13 +162,17 @@ print("Do you want to see the plot of the home ranges?")
 cat ("press y if yes or n if you don't: ")
 print("Press [enter], please!")
 cat(" "); c=scan(what=character(),nmax=1);
+repeat
+{
 if(c=="y"){ 
 	plot(hranges)
+break;
 }else if(c=="n"){
 	print("Ok, maybe you consider to do it later")
+break;
 }else{ print("Please type lower case y or n")
 }
-
+}
 ###########################################################################################################
 #Generating the matrix with the ABSOLUTE values of pairs of individuals ranges overlaps 
 ###########################################################################################################
