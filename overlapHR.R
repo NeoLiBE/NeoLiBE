@@ -37,7 +37,7 @@
 #############################
 
 print("If you need to cite this code please use: Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 20XX. Challenges and perspectives for studies on home range of Brazilian lizards. South American Jour. Herpetol. xx:yy-zz")
-cat ("Just press [enter] again")
+cat("Just press [enter] again")
 readline();
 print("&")
 print(citation("adehabitatHR"))
@@ -54,9 +54,7 @@ if(is.element('rgeos', installed.packages()[,1]) == FALSE) {
 }else(is.element('rgeos', installed.packages()[,1]) == TRUE)
 {print("You already have installed the rgeos package!")
 }
-
-#cat ("Press [enter] please")
-#readline();
+#Check if user want to load package rgeos
 repeat 
 {
 print("Do you want to load rgeos at this time?[y] or [n]")
@@ -73,7 +71,6 @@ break;
 break;
 
 }else {print("Please type lower case y or n")
-
 }
 }
 
@@ -87,8 +84,8 @@ if(is.element('adehabitatHR', installed.packages()[,1]) == FALSE) {
 }else {is.element('adehabitatHR', installed.packages()[,1]) == TRUE}
 {print("You already have installed the adehabitatHR package!")
 }
-#cat ("Press [enter] please")
-#readline();
+
+#Check if user want to load package adehabitatHR
 repeat
 {
 print("Do you want to load adehabitatHR at this time?[y] or [n]")
@@ -116,7 +113,22 @@ break;
 
 pointdata = read.csv("spatdata.csv", header=TRUE, sep=",")  # pay spetial attention in the type of columm separator you're using here we used "," you can change it accordling.
 
-print(pointdata) # inspecting the object “pointdata”
+#Check if user want to see the object with stored data.
+print("Do you want to inspect your R object corresponding to your data file? [y] or [n]")
+cat ("press y if yes or n if you don't: ")
+print("Press [enter], please!")
+cat(" "); g=scan(what=character(),nmax=1);
+repeat
+{
+if(g=="y"){ 
+	print(pointdata)	
+break;
+}else if(c=="n"){
+	print("Ok, maybe later!")
+break;
+}else{ print("Please type lower case y or n")
+}
+}
  
 
 ###############################
@@ -137,6 +149,7 @@ hranges=mcp(identities, percent=95, unin='m', unout='m2')    # Generates the obj
 
 hranges.df=as.data.frame(hranges)
 
+#Check if user want to see estimated home range values
 print("Do you want to see values of home ranges? [y] or [n]")
 cat ("press y if yes or n if you don't: ")
 print("Press [enter], please!")
@@ -176,6 +189,9 @@ break;
 ###########################################################################################################
 #Generating the matrix with the ABSOLUTE values of pairs of individuals ranges overlaps 
 ###########################################################################################################
+print("Generating matrix with ABSOLUTE overlap values")
+cat ("Press [enter] please")
+readline();
 
 abs_Matrix=matrix(NA, abs(length(levels(pointdata$id))), abs(length(levels(pointdata$id))), dimnames=list(c(levels(pointdata$id)),c(levels(pointdata$id))))
 
@@ -198,13 +214,16 @@ write.csv(abs_Matrix, "The_Matrix.csv")
 #Generating the matrix with the RELATIVE values of pairs of individuals ranges overlaps 
 ###########################################################################################################
 
+print("Generating matrix with relative overlap values")
+cat ("Press [enter] please")
+readline();
 rel_Matrix <- matrix(NA, abs(length(levels(pointdata$id))), abs(length(levels(pointdata$id))), dimnames=list(c(levels(pointdata$id)),c(levels(pointdata$id))))
 	for(i in 1:abs(length(levels(pointdata$id)))){
                areas.percent<-(abs_Matrix[,i])/hranges$area[i]
                rel_Matrix[,i]<-areas.percent
                }
 print(rel_Matrix)
-print("It will give to you the file with your matrix of relative vallues")
+print("It will give to you the file with your matrix of relative values")
 cat ("Press [enter] please")
 readline();
 print("Check in your work folder for Rel_Matrix.csv file")
