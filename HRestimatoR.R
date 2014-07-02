@@ -10,7 +10,7 @@
 # These lines of code are product of the Neotropical Lizard Behavioral Ecology-NeoLiBE group from Brazil
 #
 # By Daniel C. Passos and Conrado A. B. Galdino
-# Version v1.0rc1; October 2013
+# Version v1.01; October 2013
 # Reviewed: 07 May 2014
 # Last Review: 01 July 2014
 #
@@ -37,16 +37,16 @@
 #############################
 
 print("If you need to cite this code please use: Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 20XX. Challenges and perspectives for studies on home range of Brazilian lizards. South American Jour. Herpetol. xx:yy-zz")
-cat("Just press [enter]")
+cat("Just press [enter] again")
 readline();
 print("&")
 print(citation("adehabitatHR"))
-cat ("Just press [enter] again!")
+cat ("Just press [enter] again")
 readline();
 
 
-####################################################
-#Routine for check install and load “rgeos” package #
+###################################################
+#Routine for check install and load “rgeos” package 
 ###################################################
 
 if(is.element('rgeos', installed.packages()[,1]) == FALSE) {
@@ -54,7 +54,9 @@ install.packages('rgeos')
 }else(is.element('rgeos', installed.packages()[,1]) == TRUE)
 {print("You already have installed the rgeos package!")
 }
+
 #Check if user want to load package rgeos
+
 repeat
 {
 print("Do you want to load rgeos at this time?[y] or [n]")
@@ -74,12 +76,14 @@ writeLines("")
 break;
 
 }else {print("Please type lower case y or n")
+	cat("Just press [enter] again")
+	readline();
 }
 }
 
 
-###########################################################
-#Routine to check install and load “adehabitatHR” package #
+##########################################################
+#Routine to check install and load “adehabitatHR” package 
 ##########################################################
 
 if(is.element('adehabitatHR', installed.packages()[,1]) == FALSE) {
@@ -89,6 +93,7 @@ install.packages('adehabitatHR')
 }
 
 #Check if user want to load package adehabitatHR
+
 repeat
 {
 print("Do you want to load adehabitatHR at this time?[y] or [n]")
@@ -106,8 +111,11 @@ print("Ok, maybe you consider to do it later")
 writeLines("")
 break;
 }else {print("Please type lower case y or n")
+	cat("Just press [enter] again")
+	readline();
 }
 }
+
 
 ######################
 #Loading data into R
@@ -115,29 +123,37 @@ break;
 # ATTENTION: The package adehabitatHR will not generate polygons if you have less than 5 points per individual
 ######################
 
-pointdata = read.csv("spatdata.csv", header=TRUE, sep=",") # pay spetial attention in the type of columm separator you're using here we used "," you can change it accordling.
+pointdata = read.csv("spatdata.csv", header=TRUE, sep=",") # pay spetial attention in the type of columm separator you're using. Here we used "," you can change it accordling
 
 #Check if user want to see the object with stored data.
+
+repeat
+{
 print("Do you want to inspect your R object corresponding to your data file? [y] or [n]")
 cat ("press y if yes or n if you don't: ")
 print("Press [enter], please!")
 cat(" "); g=scan(what=character(),nmax=1);
-repeat
-{
+
 if(g=="y"){
 print(pointdata)	
 break;
 }else if(g=="n"){
+writeLines("")
 print("Ok, maybe later!")
+writeLines("")
 break;
+
 }else{ print("Please type lower case y or n")
+	cat("Just press [enter] again")
+	readline();
+writeLines("")
 }
 }
  
 
-###############################
-#Setting spatial coordinates #
-##############################
+#############################
+#Setting spatial coordinates 
+#############################
  
 locations=data.frame(pointdata$x,pointdata$y)
 
@@ -145,42 +161,52 @@ identities=data.frame(pointdata$id)
 
 coordinates(identities)<-locations
 
+
 ###################################################################################################################
-#Generating home ranges R object for each individual in a sample and asking for show and write a file with HR data#
+#Generating home ranges R object for each individual in a sample and asking for show and write a file with HR data
 ###################################################################################################################
 
-hranges=mcp(identities, percent=95, unin='m', unout='m2') # Generates the object “hranges” that contains the home range estimates in squared meters for each individual.
-
+hranges=mcp(identities, percent=95, unin='m', unout='m2') 
 hranges.df=as.data.frame(hranges)
 
 #Check if user want to see estimated home range values
-print("Do you want to see values of home ranges? [y] or [n]")
+
+repeat
+{
+print("Do you want the values of home ranges size? [y] or [n]")
 cat ("press y if yes or n if you don't: ")
 print("Press [enter], please!")
 cat(" "); c=scan(what=character(),nmax=1);
-repeat
-{
+
 if(c=="y"){
-print(hranges.df)	
+print(hranges.df)
+cat("This will write a file with results in your disc; press [enter]")
+	readline();
+writeLines("")	
 print("Check in your work folder for HRanges.csv file")
+writeLines("")
 write.csv(hranges.df, "HRanges.csv")
 break;
 }else if(c=="n"){
 print("Ok, maybe you consider to do it later")
 break;
 }else{ print("Please type lower case y or n")
+	cat("Just press [enter] again")
+	readline();
 }
 }
-########################################################
-#Asking to print the plot with the home ranges
-########################################################
 
+
+###############################################
+#Asking to print the plot with the home ranges
+################################################
+
+repeat
+{
 print("Do you want to see the plot of the home ranges?")
 cat ("press y if yes or n if you don't: ")
 print("Press [enter], please!")
 cat(" "); c=scan(what=character(),nmax=1);
-repeat
-{
 if(c=="y"){
 plot(hranges)
 break;
@@ -188,11 +214,17 @@ break;
 print("Ok, maybe you consider to do it later")
 break;
 }else{ print("Please type lower case y or n")
+	cat("Just press [enter] again")
+	readline();
+writeLines("")
 }
 }
-###########################################################################################################
+
+
+#########################################################################################
 #Generating the matrix with the ABSOLUTE values of pairs of individuals ranges overlaps
-###########################################################################################################
+#########################################################################################
+
 print("Generating matrix with ABSOLUTE overlap values")
 cat ("Press [enter] please")
 readline();
@@ -214,9 +246,10 @@ print("Check in your work folder for The_Matrix.csv file")
 write.csv(abs_Matrix, "The_Matrix.csv")
 
 
-###########################################################################################################
+########################################################################################
 #Generating the matrix with the RELATIVE values of pairs of individuals ranges overlaps
-###########################################################################################################
+########################################################################################
+
 writeLines("")
 writeLines("")
 print("Generating matrix with relative overlap values")
@@ -233,8 +266,8 @@ cat ("Press [enter] please")
 readline();
 print("Check in your work folder for Rel_Matrix.csv file")
 write.csv(rel_Matrix, "rel_Matrix.csv")
-
 writeLines("")
 writeLines("")
 print("Hope now you have all results needed")
-print("end [fim] of this routine")
+print("end [FIM] of this routine")
+
