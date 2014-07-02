@@ -104,9 +104,12 @@ library('adehabitatHR')
 cat ("Just press [enter] again")
 readline();
 print("adehabitatHR is ready to use")
+writeLines("")
 print("next time you need to load adehabitatHR please do it manually")
+writeLines("")
 break;
 }else if (b=="n"){
+writeLines("")
 print("Ok, maybe you consider to do it later")
 writeLines("")
 break;
@@ -129,9 +132,8 @@ pointdata = read.csv("spatdata.csv", header=TRUE, sep=",") # pay spetial attenti
 
 repeat
 {
-print("Do you want to inspect your R object corresponding to your data file? [y] or [n]")
-cat ("press y if yes or n if you don't: ")
-print("Press [enter], please!")
+print("Do you want to inspect your R object corresponding to your data file?")
+print("press y if yes or n if you don't: ")
 cat(" "); g=scan(what=character(),nmax=1);
 
 if(g=="y"){
@@ -173,22 +175,23 @@ hranges.df=as.data.frame(hranges)
 
 repeat
 {
-print("Do you want the values of home ranges size? [y] or [n]")
-cat ("press y if yes or n if you don't: ")
-print("Press [enter], please!")
+print("Do you want the values of home ranges size?")
+print("press y if yes or n if you don't: ")
 cat(" "); c=scan(what=character(),nmax=1);
 
 if(c=="y"){
 print(hranges.df)
 cat("This will write a file with results in your disc; press [enter]")
-	readline();
+readline();
 writeLines("")	
 print("Check in your work folder for HRanges.csv file")
 writeLines("")
 write.csv(hranges.df, "HRanges.csv")
 break;
 }else if(c=="n"){
+writeLines("")
 print("Ok, maybe you consider to do it later")
+writeLines("")
 break;
 }else{ print("Please type lower case y or n")
 	cat("Just press [enter] again")
@@ -204,14 +207,15 @@ break;
 repeat
 {
 print("Do you want to see the plot of the home ranges?")
-cat ("press y if yes or n if you don't: ")
-print("Press [enter], please!")
+print("press y if yes or n if you don't: ")
 cat(" "); c=scan(what=character(),nmax=1);
 if(c=="y"){
 plot(hranges)
 break;
 }else if(c=="n"){
+writeLines("")
 print("Ok, maybe you consider to do it later")
+writeLines("")
 break;
 }else{ print("Please type lower case y or n")
 	cat("Just press [enter] again")
@@ -239,7 +243,7 @@ p2 <- as(hranges@'polygons'[[j]]@'Polygons'[[1]]@'coords',"gpc.poly")
 abs_Matrix[i,j] <-area.poly(p1)+area.poly(p2)-area.poly(union(p1,p2))
 }}
 print(abs_Matrix)
-print("It will give to you the file with your matrix")
+print("This will give to you the file with your matrix")
 cat ("Press [enter] please")
 readline();
 print("Check in your work folder for The_Matrix.csv file")
@@ -261,7 +265,7 @@ for(i in 1:abs(length(levels(pointdata$id)))){
                rel_Matrix[,i]<-areas.percent
                }
 print(rel_Matrix)
-print("It will give to you the file with your matrix of relative values")
+print("This will give to you the file with your matrix of relative values")
 cat ("Press [enter] please")
 readline();
 print("Check in your work folder for Rel_Matrix.csv file")
