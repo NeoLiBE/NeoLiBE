@@ -9,11 +9,12 @@
 #######################################################################################################
 # These lines of code are product of the Neotropical Lizard Behavioral Ecology-NeoLiBE group from Brazil
 #
-# By Daniel C. Passos and Conrado A. B. Galdino
-# Version v1.01; October 2013
+# By Conrado A. B. Galdino and Daniel C. Passos
+# Version v1.00; October 2013
 # Reviewed: 07 May 2014
-# Last Review: 01 July 2014
-#
+# Current version v.1.03
+# Last Review: 02 July 2014
+# 
 #########################################################################################################
 
 #########################################################################################################################
