@@ -209,7 +209,7 @@ repeat
 print("Do you want to see the plot of the home ranges?")
 print("press y if yes or n if you don't: ")
 cat(" "); d <- scan(what = character(),nmax = 1);
-if(d == "y"){
+if (d == "y") {
   plot(hranges)
 break;
 } else if (d == "n") {
