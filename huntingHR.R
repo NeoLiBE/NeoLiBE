@@ -9,12 +9,11 @@
 #######################################################################################################
 # These lines of code are product of the Neotropical Lizard Behavioral Ecology-NeoLiBE group from Brazil
 #
-# By Conrado A. B. Galdino and Daniel C. Passos
-# Version v1.00; October 2013
+# By Daniel C. Passos and Conrado A. B. Galdino
+# Version v1.02; October 2013
 # Reviewed: 07 May 2014
-# Current version v.1.03
-# Last Review: 02 July 2014
-# 
+# Last Review: 03 July 2014
+#
 #########################################################################################################
 
 #########################################################################################################################
@@ -32,6 +31,14 @@
 
 
 #ATTENTION: This code is only able to calculate polygons area, inspect your point database for any conformation that did not forms a polygon, such as a line :D
+
+
+####################
+#Setting line size
+####################
+
+options(width = 80)
+
 
 #############################
 #Citation advice
@@ -62,8 +69,10 @@ if (is.element('rgeos', installed.packages()[,1]) == FALSE) {
 repeat {
 print("Do you want to load rgeos at this time?[y] or [n]")
 a <- scan(what = character(),nmax = 1);
-
-if (a == "y") {
+if (length(a) == 0){
+  stop("You must type 'y' or 'n' whenever asked")
+}  
+else if (a == "y") {
   print("Loading the package")
   library('rgeos')
   print("rgeos package is ready to use")
@@ -75,13 +84,14 @@ break;
   print("Ok, maybe you consider to do it later")
   writeLines("")
 break;
-
 } else { 
   print("Please type lower case y or n")
   cat("Just press [enter] again")
   readline();
 }
 }
+
+
 
 
 ##########################################################
@@ -100,7 +110,10 @@ if (is.element('adehabitatHR', installed.packages()[,1]) == FALSE) {
 repeat {
 print("Do you want to load adehabitatHR at this time?[y] or [n]")
 cat(" "); b <- scan(what = character(),nmax = 1);
-if (b == "y") {
+if (length(b) == 0){
+  stop("You must type 'y' or 'n' whenever asked")
+} 
+else if (b == "y") {
   print("Loading adehabitatHR package")
   library('adehabitatHR')
   cat ("Just press [enter] again")
@@ -137,7 +150,10 @@ repeat {
 print("Do you want to inspect your R object corresponding to your data file?")
 print("press y if yes or n if you don't: ")
 cat(" "); g <- scan(what = character(),nmax = 1);
-if (g == "y") {
+if (length(g) == 0){
+  stop("You must type 'y' or 'n' whenever asked")
+} 
+else if (g == "y") {
   print(pointdata)	
 break;
 } else if(g == "n") {
@@ -178,7 +194,10 @@ repeat
 print("Do you want the values of home ranges size?")
 print("press y if yes or n if you don't: ")
 cat(" "); c <- scan(what = character(),nmax = 1);
-if (c == "y") {
+if (length(c) == 0){
+  stop("You must type 'y' or 'n' whenever asked")
+} 
+else if (c == "y") {
   print(hranges.df)
   cat("This will write a file with results in your disc; press [enter]")
   readline();
@@ -209,7 +228,10 @@ repeat
 print("Do you want to see the plot of the home ranges?")
 print("press y if yes or n if you don't: ")
 cat(" "); d <- scan(what = character(),nmax = 1);
-if (d == "y") {
+if (length(d) == 0){
+  stop("You must type 'y' or 'n' whenever asked")
+} 
+else if(d == "y"){
   plot(hranges)
 break;
 } else if (d == "n") {
