@@ -32,15 +32,11 @@
 #ATTENTION: This code is only able to calculate polygons area, inspect your point database for any conformation that did not forms a polygon, such as a line :D
 
 
-####################
-#Setting line size
-####################
-
-options(width = 80)
 
 ################
 #Welcome message
 ################
+
 writeLines("")
 print("#####################")
 print("Welcome to huntingHR!")
@@ -49,6 +45,8 @@ writeLines("")
 cat ("Just press [enter] to start this script")
   readline();
 writeLines("")
+
+
 #############################
 #Citation advice
 #############################
@@ -81,13 +79,12 @@ break;
   readline();
 }
 }
-####
-
 
 
 ###################################################
 #Routine for check install and load “rgeos” package 
 ###################################################
+
 writeLines("")
 if (is.element('rgeos', installed.packages()[, 1]) == FALSE) {
   install.packages('rgeos')
@@ -122,8 +119,6 @@ break;
   readline();
 }
 }
-
-
 
 
 ##########################################################
