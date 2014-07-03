@@ -10,9 +10,9 @@
 # These lines of code are product of the Neotropical Lizard Behavioral Ecology-NeoLiBE group from Brazil
 #
 # By Daniel C. Passos and Conrado A. B. Galdino
-# Version v1.02; October 2013
+# Version v1.04; October 2013
 # Reviewed: 07 May 2014
-# Last Review: 03 July 2014
+# Last Review: 01 July 2014
 #
 #########################################################################################################
 
@@ -57,9 +57,9 @@ readline();
 #Routine for check install and load “rgeos” package 
 ###################################################
 
-if (is.element('rgeos', installed.packages()[,1]) == FALSE) {
+if (is.element('rgeos', installed.packages()[, 1]) == FALSE) {
   install.packages('rgeos')
-} else (is.element('rgeos', installed.packages()[,1]) == TRUE)
+} else (is.element('rgeos', installed.packages()[, 1]) == TRUE)
   {
   print("You already have installed the rgeos package!")
   }
@@ -68,7 +68,7 @@ if (is.element('rgeos', installed.packages()[,1]) == FALSE) {
 
 repeat {
 print("Do you want to load rgeos at this time?[y] or [n]")
-a <- scan(what = character(),nmax = 1);
+a <- scan(what = character(), nmax = 1);
 if (length(a) == 0){
   stop("You must type 'y' or 'n' whenever asked")
 }  
@@ -98,9 +98,9 @@ break;
 #Routine to check install and load “adehabitatHR” package 
 ##########################################################
 
-if (is.element('adehabitatHR', installed.packages()[,1]) == FALSE) {
+if (is.element('adehabitatHR', installed.packages()[, 1]) == FALSE) {
   install.packages('adehabitatHR')
-} else (is.element('adehabitatHR', installed.packages()[,1]) == TRUE)
+} else (is.element('adehabitatHR', installed.packages()[, 1]) == TRUE)
   {
   print("You already have installed the adehabitatHR package!")
   }
@@ -149,7 +149,7 @@ pointdata <- read.csv("spatdata.csv", header = TRUE, sep = ",") # pay spetial at
 repeat {
 print("Do you want to inspect your R object corresponding to your data file?")
 print("press y if yes or n if you don't: ")
-cat(" "); g <- scan(what = character(),nmax = 1);
+cat(" "); g <- scan(what = character(), nmax = 1);
 if (length(g) == 0){
   stop("You must type 'y' or 'n' whenever asked")
 } 
@@ -193,7 +193,7 @@ repeat
 {
 print("Do you want the values of home ranges size?")
 print("press y if yes or n if you don't: ")
-cat(" "); c <- scan(what = character(),nmax = 1);
+cat(" "); c <- scan(what = character(), nmax = 1);
 if (length(c) == 0){
   stop("You must type 'y' or 'n' whenever asked")
 } 
@@ -219,15 +219,15 @@ break;
 }
 
 
-###############################################
-#Asking to print the plot with the home ranges
-################################################
+#############################################################
+#Asking for print the plot with the home ranges on the screen 
+#############################################################
 
 repeat
 {
 print("Do you want to see the plot of the home ranges?")
 print("press y if yes or n if you don't: ")
-cat(" "); d <- scan(what = character(),nmax = 1);
+cat(" "); d <- scan(what = character(), nmax = 1);
 if (length(d) == 0){
   stop("You must type 'y' or 'n' whenever asked")
 } 
@@ -237,6 +237,37 @@ break;
 } else if (d == "n") {
   writeLines("")
   print("Ok, maybe you consider to do it later")
+  writeLines("")
+break;
+} else { 
+  print("Please type lower case y or n")
+  cat("Just press [enter] again")
+  readline();
+  writeLines("")
+}
+}
+
+
+###################################################
+#Asking for print pdf image with the plot of HR's
+###################################################
+
+repeat
+{
+print("Do you want to write a pdf image of the home ranges?")
+print("press y if yes or n if you don't: ")
+cat(" "); e <- scan(what = character(), nmax = 1);
+if (length(e) == 0){
+  stop("You must type 'y' or 'n' whenever asked")
+} 
+else if(e == "y"){
+  pdf("homerangeGraph.pdf")
+  plot(hranges)
+  dev.off()
+break;
+} else if (e == "n") {
+  writeLines("")
+  print("Ok, maybe later!")
   writeLines("")
 break;
 } else { 
@@ -262,16 +293,16 @@ if (a == "n" && b == "n" && g == "n" && c == "n" && d == "n") {
 #########################################################################################
 #Generating the matrix with the ABSOLUTE values of pairs of individuals ranges overlaps
 #########################################################################################
-
-print("Generating matrix with ABSOLUTE overlap values")
+writeLines("")
+print("We will now generate the matrix with the 'absolute' overlap values")
 cat ("Press [enter] please")
 readline();
-abs_Matrix <- matrix(NA, abs(length(levels(pointdata$id))), abs(length(levels(pointdata$id))), dimnames <- list(c(levels(pointdata$id)),c(levels(pointdata$id))))
+abs_Matrix <- matrix(NA, abs(length(levels(pointdata$id))), abs(length(levels(pointdata$id))), dimnames = list(c(levels(pointdata$id)), c(levels(pointdata$id))))
 for(i in 1 : abs(length(levels(pointdata$id)))){
 for(j in 1 : abs(length(levels(pointdata$id)))){
   p1 <- as(hranges@'polygons'[[i]]@'Polygons'[[1]]@'coords',"gpc.poly")
   p2 <- as(hranges@'polygons'[[j]]@'Polygons'[[1]]@'coords',"gpc.poly")
-  abs_Matrix[i,j] <- area.poly(p1) + area.poly(p2) - area.poly(union(p1,p2))
+  abs_Matrix[i, j] <- area.poly(p1) + area.poly(p2) - area.poly(union(p1, p2))
 }}
 print(abs_Matrix)
 print("This will give to you the file with your matrix")
@@ -287,13 +318,13 @@ write.csv(abs_Matrix, "The_Matrix.csv")
 
 writeLines("")
 writeLines("")
-print("Generating matrix with relative overlap values")
+print("We will now generate the matrix with 'relative' overlap values")
 cat ("Press [enter] please")
 readline();
-rel_Matrix <- matrix(NA, abs(length(levels(pointdata$id))), abs(length(levels(pointdata$id))), dimnames <- list(c(levels(pointdata$id)),c(levels(pointdata$id))))
+rel_Matrix <- matrix(NA, abs(length(levels(pointdata$id))), abs(length(levels(pointdata$id))), dimnames = list(c(levels(pointdata$id)), c(levels(pointdata$id))))
 for (i in 1:abs(length(levels(pointdata$id)))) {
-               areas.percent <- (abs_Matrix[,i])/hranges$area[i]
-               rel_Matrix[,i] <- areas.percent
+               areas.percent <- (abs_Matrix[, i])/hranges$area[i]
+               rel_Matrix[, i] <- areas.percent
                }
 print(rel_Matrix)
 print("This will give to you the file with your matrix of relative values")
