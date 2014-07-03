@@ -10,9 +10,8 @@
 # These lines of code are product of the Neotropical Lizard Behavioral Ecology-NeoLiBE group from Brazil
 #
 # By Daniel C. Passos and Conrado A. B. Galdino
-# Version v1.04; October 2013
-# Reviewed: 07 May 2014
-# Last Review: 01 July 2014
+# Version v1.03; 
+# Last Review: 03 July 2014
 #
 #########################################################################################################
 
@@ -39,31 +38,64 @@
 
 options(width = 80)
 
-
+################
+#Welcome message
+################
+writeLines("")
+print("#####################")
+print("Welcome to huntingHR!")
+print("#####################")
+writeLines("")
+cat ("Just press [enter] to start this script")
+  readline();
+writeLines("")
 #############################
 #Citation advice
 #############################
 
-print("If you need to cite this code please use: Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 20XX. Challenges and perspectives for studies on home range of Brazilian lizards. South American Jour. Herpetol. xx:yy-zz")
-cat("Just press [enter] again")
-readline();
-print("&")
-print(citation("adehabitatHR"))
-cat ("Just press [enter] again")
-readline();
+repeat {
+print("Do you want to see the citations for this code and for used packages? [y] or [n]")
+cit <- scan(what = character(), nmax = 1);
+if (length(cit) == 0){
+  stop("You must type 'y' or 'n' whenever asked")
+}  
+else if (cit == "y") {
+   print("If you need to cite this code please use: Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 20XX. Challenges and perspectives for studies on home range of Brazilian lizards. South American Jour. Herpetol. xx:yy-zz")
+  cat("Just press [enter] again")
+  readline();
+  print(citation("adehabitatHR"))
+  cat ("Just press [enter] again")
+  readline();
+  print(citation("rgeos"))
+  cat ("Just press [enter] again")
+  readline();
+break;
+} else if (cit == "n") {
+  writeLines("")
+  print("Ok, maybe you consider to do it later")
+  writeLines("")
+break;
+} else { 
+  print("Please type lower case y or n")
+  cat("Just press [enter] again")
+  readline();
+}
+}
+####
+
 
 
 ###################################################
 #Routine for check install and load “rgeos” package 
 ###################################################
-
+writeLines("")
 if (is.element('rgeos', installed.packages()[, 1]) == FALSE) {
   install.packages('rgeos')
 } else (is.element('rgeos', installed.packages()[, 1]) == TRUE)
   {
   print("You already have installed the rgeos package!")
   }
-
+writeLines("")
 #Check if user want to load package rgeos
 
 repeat {
@@ -283,9 +315,11 @@ break;
 #Joking
 ##########
 
-if (a == "n" && b == "n" && g == "n" && c == "n" && d == "n") {
+if (cit== "n" && a == "n" && b == "n" && g == "n" && c == "n" && d == "n") {
   writeLines("")
+  print("####################################################")  
   print("Oh, no, no, no, no... You are so negativistic today!")
+  print("####################################################") 
   writeLines("")
 }
 
