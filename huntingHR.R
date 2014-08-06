@@ -36,7 +36,7 @@
 ################
 #Welcome message
 ################
-
+cat(rep("\n",64)) #Writes empty lines to give the sense of a clean screen
 writeLines("")
 print("#####################")
 print("Welcome to huntingHR!")
@@ -45,7 +45,6 @@ writeLines("")
 cat ("Just press [enter] to start this script")
   readline();
 writeLines("")
-
 
 #############################
 #Citation advice
