@@ -57,7 +57,7 @@ if (length(cit) == 0){
   stop("You must type 'y' or 'n' whenever asked")
 }  
 else if (cit == "y") {
-   print("If you need to cite this code please use: Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 20XX. Challenges and perspectives for studies on home range of Brazilian lizards. South American Jour. Herpetol. xx:yy-zz")
+   print("If you need to cite this code please use: Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 2015. Challenges and Perspectives for Studies on Home Range of Lizards from South America. South American Jour. Herpetol. xx:yy-zz")
   cat("Just press [enter] again")
   readline();
   print(citation("adehabitatHR"))
