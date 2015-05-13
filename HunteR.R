@@ -1,6 +1,6 @@
 #######################################################################################################
 #
-# huntingHR
+# HunteR
 # A R code to automate animals home range estimates and overlap based on minimum convex polygon method
 #
 #
