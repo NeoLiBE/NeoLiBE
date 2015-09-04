@@ -7,7 +7,7 @@
 ########################################################################################################
 
 #######################################################################################################
-# These lines of code are product of the Neotropical Lizard Behavioral Ecology-NeoLiBE group from Brazil
+# These lines of code are product of the Neotropical Lizards Behavioral Ecology-NeoLiBE group from Brazil
 #
 # By Daniel C. Passos and Conrado A. B. Galdino
 # Version v1.03; 
@@ -57,7 +57,7 @@ if (length(cit) == 0){
   stop("You must type 'y' or 'n' whenever asked")
 }  
 else if (cit == "y") {
-   print("If you need to cite this code please use: Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 2015. Challenges and Perspectives for Studies on Home Range of Lizards from South America. South American Jour. Herpetol. xx:yy-zz")
+   print("If you need to cite this code please use:"); print("Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 2015. Challenges and Perspectives for Studies on Home Range of Lizards from South America. South American Jour. Herpetol. 10(2):82-89")
   cat("Just press [enter] again")
   readline();
   print(citation("adehabitatHR"))
