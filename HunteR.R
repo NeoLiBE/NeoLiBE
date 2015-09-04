@@ -39,7 +39,7 @@
 cat(rep("\n",64)) #Writes empty lines to give the sense of a clean screen
 writeLines("")
 print("#####################")
-print("Welcome to huntingHR!")
+print("Welcome to HunteR!")
 print("#####################")
 writeLines("")
 cat ("Just press [enter] to start this script")
