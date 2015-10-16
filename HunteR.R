@@ -7,11 +7,12 @@
 ########################################################################################################
 
 #######################################################################################################
-# These lines of code are product of the Neotropical Lizards Behavioral Ecology-NeoLiBE group from Brazil
+# These lines of code are product of the Neotropical Lizards Behavioral Ecology -- NeoLiBE group from Brazil
 #
 # By Daniel C. Passos and Conrado A. B. Galdino
-# Version v1.03; 
-# Last Review: 03 July 2014
+# Version v1.04; 
+# Former reviews: v1.03 in 03 July 2014
+#Last review: 15 October 2015
 #
 #########################################################################################################
 
@@ -46,53 +47,25 @@ cat ("Just press [enter] to start this script")
   readline();
 writeLines("")
 
-#############################
-#Citation advice
-#############################
-
-repeat {
-print("Do you want to see the citations for this code and for used packages? [y] or [n]")
-cit <- scan(what = character(), nmax = 1);
-if (length(cit) == 0){
-  stop("You must type 'y' or 'n' whenever asked")
-}  
-else if (cit == "y") {
-   print("If you need to cite this code please use:"); print("Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 2015. Challenges and Perspectives for Studies on Home Range of Lizards from South America. South American Jour. Herpetol. 10(2):82-89")
-  cat("Just press [enter] again")
-  readline();
-  print(citation("adehabitatHR"))
-  cat ("Just press [enter] again")
-  readline();
-  print(citation("rgeos"))
-  cat ("Just press [enter] again")
-  readline();
-break;
-} else if (cit == "n") {
-  writeLines("")
-  print("Ok, maybe you consider to do it later")
-  writeLines("")
-break;
-} else { 
-  print("Please type lower case y or n")
-  cat("Just press [enter] again")
-  readline();
-}
-}
-
 
 ###################################################
-#Routine for check install and load “rgeos” package 
+#Routine to check install and load “rgeos” package 
 ###################################################
 
+print("Checking for the required rgeos package")
+cat ("Just press [enter]")
+  readline();
 writeLines("")
 if (is.element('rgeos', installed.packages()[, 1]) == FALSE) {
+  print("Let's install now the package")
   install.packages('rgeos')
 } else (is.element('rgeos', installed.packages()[, 1]) == TRUE)
   {
   print("You already have installed the rgeos package!")
   }
 writeLines("")
-#Check if user want to load package rgeos
+
+#Check if the user want to load package rgeos
 
 repeat {
 print("Do you want to load rgeos at this time?[y] or [n]")
@@ -124,7 +97,11 @@ break;
 #Routine to check install and load “adehabitatHR” package 
 ##########################################################
 
+print("Checking for the required adehabitatHR package")
+cat ("Just press [enter]")
+  readline();
 if (is.element('adehabitatHR', installed.packages()[, 1]) == FALSE) {
+  print("Let's install now the package")
   install.packages('adehabitatHR')
 } else (is.element('adehabitatHR', installed.packages()[, 1]) == TRUE)
   {
@@ -160,6 +137,44 @@ break;
   readline();
   }
 }
+
+#############################
+#Citation advice
+#############################
+
+repeat {
+print("Do you want to see the citations for this code and for used packages? [y] or [n]")
+cit <- scan(what = character(), nmax = 1);
+if (length(cit) == 0){
+  stop("You must type 'y' or 'n' whenever asked")
+}  
+else if (cit == "y") {
+   print("If you need to cite this code please use:"); print("Passos, D. C; Galdino C. A. B; Rocha, C. F. D. 2015. Challenges and Perspectives for Studies on Home Range of Lizards from South America. South American Jour. Herpetol. 10(2):82-89 DOI:10.2994/SAJH-D-14-00023.1")
+  cat("Just press [enter] again")
+  readline();
+  if (is.element('adehabitatHR', installed.packages()[, 1]) == FALSE) {
+  print("You haven't installed the package")
+} else (print(citation("adehabitatHR")))
+  cat ("Just press [enter] again")
+  readline();
+if (is.element('rgeos', installed.packages()[, 1]) == FALSE) {
+  print("You haven't installed the package")
+} else (print(citation("rgeos")))
+  cat ("Just press [enter] again")
+  readline();
+break;
+} else if (cit == "n") {
+  writeLines("")
+  print("Ok, maybe you consider to do it later")
+  writeLines("")
+break;
+} else { 
+  print("Please type lower case y or n")
+  cat("Just press [enter] again")
+  readline();
+}
+}
+
 
 
 ######################
@@ -364,4 +379,3 @@ writeLines("")
 writeLines("")
 print("Hope now you have all results needed")
 print("end [FIM] of this routine")
-
