@@ -1,0 +1,49 @@
+An R script for the analysis of animals home ranges by NeoLiBE Brasil
+
+HunteR Help File
+
+To refer to Hunter.R documentation including this Help please cite: 
+PASSOS, D. C. ; GALDINO, C. A. B. ; ROCHA, C. F. D. 2015. Challenges and Perspectives for Studies on Home Range of Lizards from South America.
+South American Journal of Herpetology  10: 82-89, DOI:10.2994/SAJH-D-14-00023.1
+
+HunteR script automates the following steps: 
+
+1 - Check for and install the required adehabitatHR and rgeos packages;
+2 - Provide citations of respective code and used packages;
+3 - Load the required packages adehabitatHR and rgeos;
+4 - Provide the R object corresponding to user's data file for inspection;
+5 - Estimate the values of home ranges size for each individual based on MCP method;
+6 - Plot the map of all the polygons of home ranges; 
+7 - Generate a matrix of home ranges overlaps with absolute (m²) values;
+8 - Generate a matrix with the relative home ranges overlaps;
+
+
+To run the implemented routines of HunteR you must have in the same directory (your R working directory) the following files:
+
+1 - HunteR.R -> is the code itself;
+2 - spatdata.csv -> the data sheet with the individuals ID's and the respective locations coordinates;
+
+
+To try a demo round:
+
+1 - Install R platform (visit https://www.r-project.org/);
+2 - Windows users might select or change the proper working directory of your hard drive (File -> Change Dir -> Search Folder);
+3 - Load HunteR code in R console by using the comand: source('HunteR.R')
+4 - Follow the automated steps to generate the output files;
+
+
+To run a particular round:
+
+1 - Format your data according to spatdata.csv. Note that variables names (the first row of your csv file) MUST have the variables “id” (with the identifier of the individuals), “x” with the x-coordinates and “y” with the y-coordinates of each observation. You can copy and paste your coordinates in original ‘spatdata.csv’ or save and rename your data file as ‘spatdata.csv’. No matter if you have other variables in the “spatdata” file once routines will use only those above mentioned. In addition, check in your sheet editor when save the spatdata file if the columns are separated by commas.
+
+Obs_1: The collumns must be separated by commas.
+Obs_2: The decimal separator must be period.
+Obs_3: The coordinates must be given in meters.
+
+2 - Follow the abovementioned steps to run a demo round.
+
+3 - At the end of the run in addition to the spatdata.csv and the Hunter.R script you can have the following files in your working directory:
+HRanges.csv -> The data sheet containing the area of home ranges;
+homerangeGraph.pdf -> A PDF containing the map of home ranges;
+The_Matrix.csv -> The matrix with the absolute values of home range overlap;
+rel_Matrix.csv -> The matrix with the relative values of home range overlap.
