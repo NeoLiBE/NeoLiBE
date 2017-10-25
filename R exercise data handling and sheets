@@ -1,0 +1,20 @@
+#Dentre os dados coletados dados estão o sexo dos indivíduos, a hora de início
+#da atividade de canto com a respectiva temperatura e umidade relativa do ar.
+#supondo que vocês são os esquisadores responsáveis pela análise de dado do estudo:
+
+#1-Carregue os dados para o R em um **data frame** nomeado dados1
+#2-Inspecione o documento para avaliar a estrutura da planilha de dados.
+#3-Crie um **vetor** 'pest.cor' que contenha os valores de peso do estômago corrigidos
+#pela tara de 0.65g
+#4-Crie um **vetor** que represente a proporção de cada peso de estômago em 'pest.cor'
+#emrelação ao valor máximo de peso de estômago.
+#5-Calcule o índice gastro-somático representado pela raiz quadrada  dos pesos
+#dos estômagos dividido pelo tamanho do animal guardando o resultado em um **vetor** 'igs'
+#6-Adicione o vetor 'igs' como uma coluna no objeto dados1 de modo a manter a integridade do **data frame** dados1
+#7-Crie um data frame nomeado st_darwin que contenha somente os dados de Saint Darwin
+#Crie um data frame nomeado cp.machos que contenha somente os dados de fêmeas de Cabo Pianka
+#8-Obtenha a média o desvio padrão para cada um dos sexos de cada uma das localidades
+#para as variáveis Tamanho, inicio do canto e  igs
+#9-Crie um **data frame** que contenha os valores de sexo e de temperatura ordenados por temperatura.
+#10-Crie um **vetor** nomeado 'res.sample'que contenha somente os valores maiores do que a mediana da variável tamanho da cabeça.
+#11-Apresente um resultado que seja possível comparar diferenças entre os sexos para a hora de início de canto utilizando somente o conteúdo ministrado no curso até o momento.
