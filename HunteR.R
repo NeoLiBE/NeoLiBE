@@ -12,7 +12,7 @@
 # By Daniel C. Passos and Conrado A. B. Galdino
 # Version v1.04; 
 # Former reviews: v1.03 in 03 July 2014
-#Last review: 15 October 2015
+#Last review: 29 September 2019; 15 October 2015
 #
 #########################################################################################################
 
@@ -263,22 +263,32 @@ break;
 #############################################################
 #Asking for print the plot with the home ranges on the screen 
 #############################################################
+#Changed in 29/09/19 to plot animals ID's in the HR map
 
 repeat
 {
-print("Do you want to see the plot of the home ranges?")
+print("Do you want to see the map of the home ranges?")
 print("press y if yes or n if you don't: ")
 cat(" "); d <- scan(what = character(), nmax = 1);
 if (length(d) == 0){
   stop("You must type 'y' or 'n' whenever asked")
 } 
 else if(d == "y"){
+  print("Do you want to plot the animal's id's in the map of home ranges?")
+  print("press y if yes or n if you don't: ")
+  cat(" "); d <- scan(what = character(), nmax = 1);
+  if (length(d) == 0){
+   stop("You must type 'y' or 'n' whenever asked")
+}  
+  #########
+else if(d == "y"){
   plot(hranges)
+  text(coordinates(hranges), labels=sapply(slot(hranges, "polygons"), function(i) slot(i, "ID")), cex=0.6)
 break;
 } else if (d == "n") {
+  print("This will generate the maps without animals' id's")
   writeLines("")
-  print("Ok, maybe you consider to do it later")
-  writeLines("")
+  plot(hranges)
 break;
 } else { 
   print("Please type lower case y or n")
