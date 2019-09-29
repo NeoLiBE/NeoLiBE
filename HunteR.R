@@ -115,7 +115,7 @@ repeat {
 print("Do you want to load adehabitatHR at this time?[y] or [n]")
 cat(" "); b <- scan(what = character(),nmax = 1);
 while (length(b) == 0) {
-  print("Do you want to load rgeos at this time?[y] or [n]")
+  print("Do you want to load adehabitatHR at this time?[y] or [n]")
   b <- scan(what = character(), nmax = 1); 
   }
 if (b == "y") {
@@ -148,7 +148,7 @@ repeat {
 print("Do you want to see the citations for this code and for used packages? [y] or [n]")
 cit <- scan(what = character(), nmax = 1);
 while (length(cit) == 0) {
-  print("Do you want to load rgeos at this time?[y] or [n]")
+  print("Do you want to see the citations for this code and for used packages?[y] or [n]")
   cit <- scan(what = character(), nmax = 1);
 }  
 if (cit == "y") {
@@ -195,7 +195,7 @@ print("Do you want to inspect your R object corresponding to your data file?")
 print("press y if yes or n if you don't: ")
 cat(" "); g <- scan(what = character(), nmax = 1);
 while (length(g) == 0) {
-  print("Do you want to load rgeos at this time?[y] or [n]")
+  print("Do you want to inspect your R object corresponding to your data file? [y] or [n]")
   g <- scan(what = character(), nmax = 1);
 } 
 if (g == "y") {
@@ -240,7 +240,7 @@ print("Do you want the values of home ranges size?")
 print("press y if yes or n if you don't: ")
 cat(" "); c <- scan(what = character(), nmax = 1);
 while (length(c) == 0) {
-  print("Do you want to load rgeos at this time?[y] or [n]")
+  print("Do you want the values of home ranges size?[y] or [n]")
   c <- scan(what = character(), nmax = 1);
 } 
 if (c == "y") {
@@ -257,11 +257,7 @@ break;
   print("Ok, maybe you consider to do it later")
   writeLines("")
 break;
-} else { 
-  print("Please type lower case y or n")
-  cat("Just press [enter] again")
-  readline();
-  }
+} 
 }
 
 
@@ -276,50 +272,42 @@ print("Do you want to see the map of the home ranges?")
 print("press y if yes or n if you don't: ")
 cat(" "); d <- scan(what = character(), nmax = 1);
 while (length(d) == 0) {
-  print("Do you want to load rgeos at this time?[y] or [n]")
+  print("Do you want to see the map of the home ranges? [y] or [n]")
   d <- scan(what = character(), nmax = 1);
-} 
+}  
 if(d == "y"){
+  print("Do you want to plot the animal's id's in the map of home ranges?")
+  print("press y if yes or n if you don't: ")
+  cat(" "); d1 <- scan(what = character(), nmax = 1);
+  while (length(d1) == 0) {
+  print("Do you want to plot the animal's id's in the map of home ranges?[y] or [n]")
+  d1 <- scan(what = character(), nmax = 1);
+  }
+  #########
+  if(d1 == "y"){
   plot(hranges)
   text(coordinates(hranges), labels=sapply(slot(hranges, "polygons"), function(i) slot(i, "ID")), cex=0.6)
+  print("Creating the PDF file for this graph, check in your computer folder")
+  pdf("homerangeGraph_ids.pdf")
+  plot(hranges)
+  text(coordinates(hranges), labels=sapply(slot(hranges, "polygons"), function(i) slot(i, "ID")), cex=0.6)
+  dev.off()
 break;
-} else if (d == "n") {
-  print("This will generate the maps without animals' id's")
+  }
+ else {
+  print("This will generate the maps WITHOUT animals' id's")
   writeLines("")
   plot(hranges)
-break;
-} 
-}
-
-
-###################################################
-#Asking for print pdf image with the plot of HR's
-###################################################
-
-repeat
-{
-print("Do you want to write a pdf image of the home ranges?")
-print("press y if yes or n if you don't: ")
-cat(" "); e <- scan(what = character(), nmax = 1);
-while (length(e) == 0) {
-  print("Do you want to load rgeos at this time?[y] or [n]")
-  e <- scan(what = character(), nmax = 1);
-} 
-if(e == "y"){
+  print("Creating the PDF file for this graph, check in your computer folder")
   pdf("homerangeGraph.pdf")
   plot(hranges)
   dev.off()
 break;
-} else if (e == "n") {
-  writeLines("")
-  print("Ok, maybe later!")
-  writeLines("")
+} 
+}
+ else {
+print("No graph was criated")
 break;
-} else { 
-  print("Please type lower case y or n")
-  cat("Just press [enter] again")
-  readline();
-  writeLines("")
 }
 }
 
@@ -333,6 +321,8 @@ if (cit== "n" && a == "n" && b == "n" && g == "n" && c == "n" && d == "n") {
   print("####################################################")  
   print("Oh, no, no, no, no... You are so negativistic today!")
   print("####################################################") 
+  writeLines("")
+  writeLines("")
   writeLines("")
 }
 ##############################################################################
@@ -352,7 +342,7 @@ if(ovl == "n"){
   stop("Thank you for using HunteR! The script is ended by you")
 break;
 }
-else if () {
+else {
 #########################################################################################
 #Generating the matrix with the ABSOLUTE values of pairs of individuals ranges overlaps
 #########################################################################################
